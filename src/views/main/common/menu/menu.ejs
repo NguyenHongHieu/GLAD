@@ -1,0 +1,102 @@
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Offcanvas Menu Begin -->
+<div class="offcanvas-menu-overlay"></div>
+<div class="offcanvas-menu-wrapper">
+    <div class="offcanvas__close">+</div>
+
+    <ul class="offcanvas__widget">
+        <div>
+
+        </div>
+        <li class="offcanvas__logo"><a href="/"><img src="/img/logo.png" alt="GLAD"></a></li>
+        <li><a href="/products/auction"><span class="fa fa-gavel"></span>
+                <div class="tip"><%-numberBiddingProd%></div>
+            </a></li>
+        <li><a href="/products/cart"><span class="fa fa-shopping-cart"></span>
+                <div class="tip" id="cart_count"><%-cartCounter%></div>
+            </a></li>
+    </ul>
+    <div class="offcanvas__auth align-middle">
+        <a href="/login">Login</a>
+        <a href="/user/register">Register</a>
+    </div>
+    <div id="mobile-menu-wrap"></div>
+</div>
+<!-- Offcanvas Menu End -->
+
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-2">
+                <div class="header__logo">
+                    <a href="/"><img src="/img/logo.png" alt="SOAS."></a>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-7">
+                <form method="get">
+                    <div class="header__search input-group">
+                        <input type="text" name="q" class="search_bar form-control" placeholder="Search here">
+                        <div class="input-group-append">
+                            <button class="search-btn" type="submit">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-3">
+                <div class="header__right">
+
+                    <ul class="header__right__widget">
+                        <li><a href="/products/auction"><span class="fa fa-gavel"></span>
+                                <div class="tip" id="number-product-bidding"><%-numberBiddingProd%></div>
+                            </a></li>
+                        <li><a href="/products/cart"><span class="fa fa-shopping-cart"></span>
+                                <div class="tip"><%-cartCounter%></div>
+                            </a></li>
+                    </ul>
+
+                    <div class="header__right__auth">
+                        <%- include ('./user-menu.ejs')  %>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="canvas__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+    <div class="container-fluid" style="background-color: #1e8fb3;">
+        <div class="container row mx-auto">
+            <nav class="header__menu col-xl-3 col-lg-2 mx-auto">
+                <ul>
+                    <li><a href="#"><h3><i class="fa fa-bars mr-2" style="font-size: larger;"
+                        aria-hidden="true"></i>Category</h3></a>
+                        <ul class="dropdown">
+                            <% categories.forEach(item =>{%>
+                                <li><a href="/products/?category=<%-item.code%>"><h4><%-item.value%></h4></a></li>
+                            <% })%>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="header__menu col-xl-9 col-lg-10 text-right">
+                <ul>
+                    <li><a href="/"><h3>Home</h3></a></li>
+                    <li><a href="/"><h3>Store</h3></a></li>
+                    <li><a href="/products/auction"><h3>Auction</h3></a></li>
+                    <li><a href="/contact"><h3>Contact</h3></a></li> 
+                    <!-- thay địa chỉ trang web khác -->
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+<!-- Header Section End -->

@@ -1,0 +1,118 @@
+<!-- header -->
+<%- include("../common/header/header.ejs"); %>
+<!-- breadcrumb -->
+<%- include("../common/menu/menu.ejs"); %>
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__links">
+                    <a href="./"><i class="fa fa-home"></i> Home</a>
+                    <span>Product Details</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Product Details Section Begin -->
+<section class="top__area spad" id="product_<%-product._id%>">
+    <div class="container bg-white p-5 rounded">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="product__details__pic">
+                    <div class="product__details__pic__left product__thumb nice-scroll">
+                        <a class="pt active" href="#product-1">
+                            <img src="<%-product.image%>" alt="Product image 1">
+                        </a>
+                        <a class="pt" href="#product-2">
+                            <img src="<%-product.image%>" alt="Product image 2">
+                        </a>
+                        <a class="pt" href="#product-3">
+                            <img src="<%-product.image%>" alt="Product image 3">
+                        </a>
+                        <a class="pt" href="#product-4">
+                            <img src="<%-product.image%>" alt="Product image 4">
+                        </a>
+                    </div>
+                    <div class="product__details__slider__content">
+                        <div class="product__details__pic__slider owl-carousel">
+                            <img data-hash="product-1" class="product__big__img" src="<%-product.image%>"
+                                alt="Product image 1">
+                            <img data-hash="product-2" class="product__big__img" src="<%-product.image%>"
+                                alt="Product image 2">
+                            <img data-hash="product-3" class="product__big__img" src="<%-product.image%>"
+                                alt="Product image 3">
+                            <img data-hash="product-4" class="product__big__img" src="<%-product.image%>"
+                                alt="Product image 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="product__details__text">
+                    <h3><%-product.name%><span>Sold by: <a href="/user/profile-seller/<%-seller._id%>/<%-product._id%>"><b><%-seller.username%></b></a></span></h3>
+
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <span id="product_watching_<%-product._id%>">
+                            <img src="/gif/loading.gif" alt="" width="100" height="auto">
+                        </span>
+                    </div>
+                    <%if(product.status === '2'){%>
+                        <div class="product__details__widget">
+                            <ul>
+                                <li>
+                                    <h4>Product now is time out if you had bidded this product please check your email !</h4>
+                                    <p class="text-success">Online secure auction team thank you.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    <%}else{%>
+                        <div class="product__details__widget">
+                            <ul>
+                                <li>
+                                    <span>Time:</span>
+                                    <input type="hidden" id="timerdate" value="<%-product.aucEndTime%>">
+                                    <p class="bg-light text-secondary text-monospace font-weight-bold" id="countdown-time"></p>
+                                </li>
+                                <li>
+                                    <span>Current winner:</span>
+                                    <p id="details_<%-product._id%>"><%-userWithHighestPrice%></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="product__details__price pt-5">
+                            <span class="text-danger">$</span>
+                            <span id="<%-product._id%>" style="text-decoration: none;" class="text-danger"><%-product.price%></span>
+                        </div>
+                        <div class="product__details__button">
+                            <div class="quantity">
+                                <span>Expected price:</span>
+                                <div class="pro-qty">
+                                    <input
+                                        type="text"
+                                        value="<%-product.nextPrice%>"
+                                        min="<%-product.nextPrice%>"
+                                        step="<%-product.priceStep%>"
+                                        id="input-price<%-product._id%>"
+                                    >
+                                </div>
+                            </div>
+                            <button class="cart-btn" onclick="onBiddingProduct('<%-product._id%>')"><span class="icon_bag_alt"></span> Bid</button>
+                        </div>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Details Section End -->
+    <!-- footer -->
+<%- include("../common/footer/footer.ejs"); %>
